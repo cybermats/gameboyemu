@@ -162,11 +162,11 @@ private:
   void LDDEmA() { _mmu->writeByte((_d<<8)+_e, _a); _ticks=2; }
 
   void LDmmA() { _mmu->writeByte(_mmu->readWord(_pc), _a); _pc+=2; _ticks=4; }
+  void LDAmm() { _a=_mmu->readByte(_mmu->readWord(_pc)); _pc+=2; _ticks=4; }
 
   void LDABCm() { _a=_mmu->readByte((_b<<8)+_c); _ticks=2; }
   void LDADEm() { _a=_mmu->readByte((_d<<8)+_e); _ticks=2; }
 
-  void LDAmm() { _a=_mmu->readByte(_mmu->readWord(_pc)); _pc+=2; _ticks=4; }
 
   void LDBCnn() { _c=_mmu->readByte(_pc); _b=_mmu->readByte(_pc+1); _pc+=2; _ticks=3; }
   void LDDEnn() { _e=_mmu->readByte(_pc); _d=_mmu->readByte(_pc+1); _pc+=2; _ticks=3; }
