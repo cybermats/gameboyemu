@@ -176,6 +176,8 @@ private:
   void LDHLmm() { unsigned short i=_mmu->readWord(_pc); _pc+=2; _l=_mmu->readByte(i); _h=_mmu->readByte(i+1); _ticks=5; }
   void LDmmHL() { unsigned short i=_mmu->readWord(_pc); _pc+=2; _mmu->writeWord(i,(_h<<8)+_l); _ticks=5; }
 
+  void LDmmSP() { unsigned short i=_mmu->readWord(_pc); _pc+=2; _mmu->writeWord(i, _sp); _ticks=5; }
+
   void LDHLIA() { _mmu->writeByte((_h<<8)+_l, _a); _l=(_l+1)&255; if(!_l) _h=(_h+1)&255; _ticks=2; }
   void LDAHLI() { _a=_mmu->readByte((_h<<8)+_l); _l=(_l+1)&255; if(!_l) _h=(_h+1)&255; _ticks=2; }
 
