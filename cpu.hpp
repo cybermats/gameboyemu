@@ -9,15 +9,16 @@ public:
 
   
   void reset();
-  void exec();
+  void execNext();
 
 
 private:
 
-  typedef void(*OpPointer)();
-  OpPointer *_ops[];
-  OpPointer *_cbops[];
+  typedef void(Cpu::*OpPointer)();
   
+  static OpPointer _ops[];
+  static OpPointer _cbops[];
+   
 
   Mmu* _mmu;
 
@@ -672,7 +673,9 @@ private:
     void MAPcb() {
       unsigned char i=_mmu->readByte(_pc); _pc++;
       _pc &= 65535;
-      if(_cbops[i]) (*_cbops[i])();
+      if(_cbops[i])
+	(this->*(_cbops[i]))();
+      // (*_cbops[i])();
       throw "unknown operand called from MAPcb";
       //      else console.log(i);
     }
