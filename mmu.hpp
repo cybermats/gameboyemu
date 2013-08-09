@@ -13,7 +13,7 @@ class Mmu
   
   void reset();
 
-  void loadFile(std::string filename);
+  void loadFile(const std::string& filename);
 
 
 
@@ -22,3 +22,4 @@ class Mmu
   
 
 };
+

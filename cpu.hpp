@@ -685,7 +685,7 @@ private:
   inline void XX() {
     /*Undefined map entry*/
     unsigned short opc = _pc-1;
-    throw "Unimplemented instruction";
+    throw "Unimplemented instruction" + opc;
     //      LOG.out('Z80', 'Unimplemented instruction at $'+opc.toString(16)+', stopping.');
     _stop=1;
   }
