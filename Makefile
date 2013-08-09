@@ -16,7 +16,8 @@ src = cpu.cpp \
 	mmu.cpp
 
 
-test_src = testmain.cpp
+test_src = testmain.cpp \
+	testcpu.cpp
 
 main_src = main.cpp
 
